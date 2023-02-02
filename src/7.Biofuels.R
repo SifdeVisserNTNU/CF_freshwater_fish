@@ -13,6 +13,10 @@ library(readxl); library(dplyr); library(ggplot2);
 # Read files
 Results <- read_excel("data\\Biofuels\\Biofuels_characterization_results.xlsx")
 
+# Increase in impact scores compared to LC-IMPACT climate change ---------------
+Percentual_increase <- (Results$CC_FW_new - Results$`CC_FW_LC-IMPACT`) /
+  Results$`CC_FW_LC-IMPACT` * 100
+
 # Create a list of impact scores -----------------------------------------------
 climate_change_new <- Results[1:4,2]
 climate_change <- Results[1:4,3]
@@ -30,7 +34,7 @@ categories <- c(rep("Climate change new",4),
 fuels <- rep(c("Diesel", "Biodiesel", "Petrol", "Biopetrol"),4)
 
 # Combine in dataframe
-biofuels <- data.frame(scores,categories,fuels) 
+biofuels <- data.frame(scores,categories,fuels)
 
 ################################################################################
 # Plot Fig 4

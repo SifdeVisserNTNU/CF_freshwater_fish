@@ -221,6 +221,10 @@ EF_complete <- bind_rows(All_EFs, Add) %>% arrange(-EFs)
 EF_complete$Index <- 1:27
 labels <- EF_complete$Warming_level
 
+# Compare with effect factor Hanafia in LC-IMPACT ------------------------------
+EF_hanafia <- 1.5e-2
+Percentual_increase <- (EB_mean-EF_hanafia)/EF_hanafia*100
+
 ################################################################################
 ## Figure 1 - All effect factors
 
@@ -256,7 +260,7 @@ Fig_1 <- ggplot(EF_complete, aes(x = reorder(Index, -EFs), y = EFs)) +
 Fig_1
 
 ################################################################################
- # Figure S2 - plot of extinction risk vs temperature, marginal vs average type
+ # Figure S1 - plot of extinction risk vs temperature, marginal vs average type
 # of effect factor
 
 # Isolate values for benchmark extinction metrics for each warming level
