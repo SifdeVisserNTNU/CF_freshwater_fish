@@ -1,5 +1,4 @@
-# CF_freshwater_fish
-## Supplementary methods for the paper "Characterization Factors for the Impact of Climate Change on Freshwater Fish Species"
+# Supplementary methods for the paper "Characterization Factors for the Impact of Climate Change on Freshwater Fish Species"
 
 The following files can be found in this repository:
 - *1.SAR.R.* This file contains all the code related to the development of the species-area relationship specific to riverine fish, i.e., for Fig. S3. 
