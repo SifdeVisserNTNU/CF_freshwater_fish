@@ -52,6 +52,9 @@ Continent_contributions[4,1] <- "N. America"
 Continent_contributions[6,1] <- "S. America"
 
 ### PLOTS ======================================================================
+   
+
+ggsave(path = "visualisations/", filename = "test6.png", Fig_2, dpi = 800, width = 160, height = 125, unit = 'mm')
 
 # In main paper - Fig_2 --------------------------------------------------------
 
@@ -62,13 +65,15 @@ base_fig2 <- ggplot() +
                          na.value = "grey",
                          trans = "log",
                          limits = c(1.0e-10, 1.0e-01),
-                         breaks = c(1.0e-10,1.0e-09,1.0e-08,1.0e-07,1.0e-06,1.0e-05,1.0e-04,1.0e-03,1.0e-02),
-                         name = 'Ep 3.2 [%]') +
+                         breaks = c(1.0e-10,1.0e-09,1.0e-08,1.0e-07,1.0e-06,1.0e-05,1.0e-04,1.0e-03,1.0e-02,1.0e-01),
+                         guide = guide_colourbar(title = "Ep 3.2 [%]",
+                                                 title.position = "top",
+                                                 title.hjust = 0.5)) + 
   theme(text = element_text(size = 10),
         panel.background = element_rect(fill = "white"),
         legend.position = "bottom",
-        legend.justification = "right",
-        legend.key.width = unit(1.9, 'cm'),
+        legend.justification = "center",
+        legend.key.width = unit(1.5, 'cm'),
         legend.text= element_text(size=8),
         axis.text.x = element_blank(),
         axis.text.y = element_blank(),
@@ -81,14 +86,15 @@ inset_fig2 <- ggplot(data=Continent_contributions, aes(x=reorder(continent, -Ep_
   scale_fill_viridis_d(option = "B", begin = 0.2, end = 0.9) +
   scale_y_continuous(limits = c(0, 40),
                      breaks = c(0, 10, 20, 30, 40)) +
+  labs(title = "Ep 3.2 [%]") +
   theme_minimal() +
-  theme(text = element_text(size = 10),
-        legend.position = "none",
+  theme(text = element_text(size = 8),
         axis.title.y = element_blank(),
         axis.title.x = element_blank(),
+        legend.position = "none",
         axis.ticks = element_blank(),
         axis.text=element_text(size=8, colour="black"),
-        panel.grid.major.x = element_blank(),
+        panel.grid.major.y = element_blank(),
         panel.grid.minor.y = element_blank(),
         panel.grid.minor.x = element_blank(),
         strip.background.x = element_blank(),
@@ -101,7 +107,7 @@ inset_fig2 <- ggplot(data=Continent_contributions, aes(x=reorder(continent, -Ep_
 Fig_2 <-
   ggdraw() +
   draw_plot(base_fig2) +
-  draw_plot(inset_fig2, x = .01, y = .185, width = .25, height = .25)
+  draw_plot(inset_fig2, x = .05, y = .27, hjust = 0, vjust = 0, width = .22, height = .3)
 
 ### Fig S4 ---------------------------------------------------------------------
 
@@ -112,13 +118,15 @@ base_figS4 <- ggplot() +
                          na.value = "grey",
                          trans = "log",
                          limits = c(1.0e-10, 1.0e-01),
-                         breaks = c(1.0e-10,1.0e-09,1.0e-08,1.0e-07,1.0e-06,1.0e-05,1.0e-04,1.0e-03,1.0e-02),
-                         name = 'Ep 1.5 [%]') +
+                         breaks = c(1.0e-10,1.0e-09,1.0e-08,1.0e-07,1.0e-06,1.0e-05,1.0e-04,1.0e-03,1.0e-02,1.0e-01),
+                         guide = guide_colourbar(title = "Ep 1.5 [%]",
+                                                 title.position = "top",
+                                                 title.hjust = 0.5)) +
   theme(text = element_text(size = 10),
         panel.background = element_rect(fill = "white"),
         legend.position = "bottom",
-        legend.justification = "right",
-        legend.key.width = unit(1.9, 'cm'),
+        legend.justification = "center",
+        legend.key.width = unit(1.5, 'cm'),
         legend.text= element_text(size=8),
         axis.text.x = element_blank(),
         axis.text.y = element_blank(),
@@ -131,14 +139,15 @@ inset_figS4 <- ggplot(data=Continent_contributions, aes(x=reorder(continent, -Ep
   scale_fill_viridis_d(option = "B", begin = 0.2, end = 0.9) +
   scale_y_continuous(limits = c(0, 40),
                      breaks = c(0, 10, 20, 30, 40)) +
+  labs(title = "Ep 1.5 [%]") +
   theme_minimal() +
-  theme(text = element_text(size = 10),
+  theme(text = element_text(size = 8),
         legend.position = "none",
         axis.title.y = element_blank(),
         axis.title.x = element_blank(),
         axis.ticks = element_blank(),
         axis.text=element_text(size=8, colour="black"),
-        panel.grid.major.x = element_blank(),
+        panel.grid.major.y = element_blank(),
         panel.grid.minor.y = element_blank(),
         panel.grid.minor.x = element_blank(),
         strip.background.x = element_blank(),
@@ -151,7 +160,7 @@ inset_figS4 <- ggplot(data=Continent_contributions, aes(x=reorder(continent, -Ep
 Fig_S4 <-
   ggdraw() +
   draw_plot(base_figS4) +
-  draw_plot(inset_figS4, x = .01, y = .185, width = .25, height = .25)
+  draw_plot(inset_figS4, x = .05, y = .27, hjust = 0, vjust = 0, width = .22, height = .3)
 
 ### Fig S5 ---------------------------------------------------------------------
 
@@ -162,13 +171,15 @@ base_figS5 <- ggplot() +
                          na.value = "grey",
                          trans = "log",
                          limits = c(1.0e-10, 1.0e-01),
-                         breaks = c(1.0e-10,1.0e-09,1.0e-08,1.0e-07,1.0e-06,1.0e-05,1.0e-04,1.0e-03,1.0e-02),
-                         name = 'Ep 2.0 [%]') +
+                         breaks = c(1.0e-10,1.0e-09,1.0e-08,1.0e-07,1.0e-06,1.0e-05,1.0e-04,1.0e-03,1.0e-02,1.0e-01),
+                         guide = guide_colourbar(title = "Ep 2.0 [%]",
+                                                 title.position = "top",
+                                                 title.hjust = 0.5)) +
   theme(text = element_text(size = 10),
         panel.background = element_rect(fill = "white"),
         legend.position = "bottom",
-        legend.justification = "right",
-        legend.key.width = unit(1.9, 'cm'),
+        legend.justification = "center",
+        legend.key.width = unit(1.5, 'cm'),
         legend.text= element_text(size=8),
         axis.text.x = element_blank(),
         axis.text.y = element_blank(),
@@ -181,14 +192,15 @@ inset_figS5 <- ggplot(data=Continent_contributions, aes(x=reorder(continent, -Ep
   scale_fill_viridis_d(option = "B", begin = 0.2, end = 0.9) +
   scale_y_continuous(limits = c(0, 40),
                      breaks = c(0, 10, 20, 30, 40)) +
+  labs(title = "Ep 2.0 [%]") +
   theme_minimal() +
-  theme(text = element_text(size = 10),
+  theme(text = element_text(size = 8),
         legend.position = "none",
         axis.title.y = element_blank(),
         axis.title.x = element_blank(),
         axis.ticks = element_blank(),
         axis.text=element_text(size=8, colour="black"),
-        panel.grid.major.x = element_blank(),
+        panel.grid.major.y = element_blank(),
         panel.grid.minor.y = element_blank(),
         panel.grid.minor.x = element_blank(),
         strip.background.x = element_blank(),
@@ -200,8 +212,8 @@ inset_figS5 <- ggplot(data=Continent_contributions, aes(x=reorder(continent, -Ep
 
 Fig_S5 <-
   ggdraw() +
-  draw_plot(base_figS4) +
-  draw_plot(inset_figS4, x = .01, y = .185, width = .25, height = .25)
+  draw_plot(base_figS5) +
+  draw_plot(inset_figS5, x = .05, y = .27, hjust = 0, vjust = 0, width = .22, height = .3)
 
 ### Fig S6 ---------------------------------------------------------------------
 
@@ -212,13 +224,15 @@ base_figS6 <- ggplot() +
                          na.value = "grey",
                          trans = "log",
                          limits = c(1.0e-10, 1.0e-01),
-                         breaks = c(1.0e-10,1.0e-09,1.0e-08,1.0e-07,1.0e-06,1.0e-05,1.0e-04,1.0e-03,1.0e-02),
-                         name = 'Ep 4.5 [%]') +
+                         breaks = c(1.0e-10,1.0e-09,1.0e-08,1.0e-07,1.0e-06,1.0e-05,1.0e-04,1.0e-03,1.0e-02,1.0e-01),
+                         guide = guide_colourbar(title = "Ep 4.5 [%]",
+                                                 title.position = "top",
+                                                 title.hjust = 0.5)) +
   theme(text = element_text(size = 10),
         panel.background = element_rect(fill = "white"),
         legend.position = "bottom",
-        legend.justification = "right",
-        legend.key.width = unit(1.9, 'cm'),
+        legend.justification = "center",
+        legend.key.width = unit(1.5, 'cm'),
         legend.text= element_text(size=8),
         axis.text.x = element_blank(),
         axis.text.y = element_blank(),
@@ -231,14 +245,15 @@ inset_figS6 <- ggplot(data=Continent_contributions, aes(x=reorder(continent, -Ep
   scale_fill_viridis_d(option = "B", begin = 0.2, end = 0.9) +
   scale_y_continuous(limits = c(0, 40),
                      breaks = c(0, 10, 20, 30, 40)) +
+  labs(title = "Ep 4.5 [%]") +
   theme_minimal() +
-  theme(text = element_text(size = 10),
+  theme(text = element_text(size = 8),
         legend.position = "none",
         axis.title.y = element_blank(),
         axis.title.x = element_blank(),
         axis.ticks = element_blank(),
         axis.text=element_text(size=8, colour="black"),
-        panel.grid.major.x = element_blank(),
+        panel.grid.major.y = element_blank(),
         panel.grid.minor.y = element_blank(),
         panel.grid.minor.x = element_blank(),
         strip.background.x = element_blank(),
@@ -251,11 +266,11 @@ inset_figS6 <- ggplot(data=Continent_contributions, aes(x=reorder(continent, -Ep
 Fig_S6 <-
   ggdraw() +
   draw_plot(base_figS6) +
-  draw_plot(inset_figS6, x = .01, y = .185, width = .25, height = .25)
+  draw_plot(inset_figS6, x = .05, y = .27, hjust = 0, vjust = 0, width = .22, height = .3)
 
 # Save files --------------------------------------------------------------------
-ggsave(path = "Figures/", filename = "Fig_2.png", Fig_2, dpi = 800, width = 160, height = 125, unit = 'mm')
-ggsave(path = "Figures/", filename = "Fig_S4.png", Fig_S4, dpi = 800, width = 160, height = 125, unit = 'mm')
-ggsave(path = "Figures/", filename = "Fig_S5.png", Fig_S5, dpi = 800, width = 160, height = 125, unit = 'mm')
-ggsave(path = "Figures/", filename = "Fig_S6.png", Fig_S6, dpi = 800, width = 160, height = 125, unit = 'mm')
+ggsave(path = "visualisations/", filename = "Fig_2.png", Fig_2, dpi = 800, width = 160, height = 90, unit = 'mm')
+ggsave(path = "visualisations/", filename = "Fig_S4.png", Fig_S4, dpi = 800, width = 160, height = 90, unit = 'mm')
+ggsave(path = "visualisations/", filename = "Fig_S5.png", Fig_S5, dpi = 800, width = 160, height = 90, unit = 'mm')
+ggsave(path = "visualisations/", filename = "Fig_S6.png", Fig_S6, dpi = 800, width = 160, height = 90, unit = 'mm')
 
